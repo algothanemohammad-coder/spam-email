@@ -1,1 +1,32 @@
+# Workout Log Analyzer
 
+workouts = []
+
+def add_workout(exercise, sets, reps, weight):
+    workouts.append({
+        "exercise": exercise,
+        "sets": sets,
+        "reps": reps,
+        "weight": weight
+    })
+
+def show_workouts():
+    for workout in workouts:
+        volume = workout['sets'] * workout['reps'] * workout['weight']
+        print(f"{workout['exercise']} - {workout['sets']} sets x {workout['reps']} reps @ {workout['weight']}kg | Volume: {volume}kg")
+
+# Test the program
+add_workout("Bench Press", 4, 8, 60)
+add_workout("Squat", 4, 10, 80)
+add_workout("Pull Up", 3, 10, 0)
+
+show_workouts()
+def best_exercise():
+    best = max(workouts, key=lambda w: w['sets'] * w['reps'] * w['weight'])
+    print(f"best exercise: {best['exercise']}")
+best_exercise()
+def total_volume():
+    total = sum(w['sets'] * w['reps'] * w['weight'] for w in workouts)
+    print(f"Total workout volume: {total}kg")
+
+total_volume()
